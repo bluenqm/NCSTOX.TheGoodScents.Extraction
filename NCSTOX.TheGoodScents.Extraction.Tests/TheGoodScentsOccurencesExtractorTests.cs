@@ -4,12 +4,14 @@ using NCSTOX.TheGoodScents.Extraction.Extractors;
 namespace NCSTOX.TheGoodScents.Extraction.Tests
 {
     [TestClass]
-    public class TheGoodScentsURLExtractorTests
+    public class TheGoodScentsOccurencesExtractorTests
     {
+        TheGoodScentsOccurencesExtractor extractor;
+
         [TestInitialize]
         public void Setup()
         {
-
+            extractor = new();
         }
 
         [TestMethod]
@@ -17,31 +19,31 @@ namespace NCSTOX.TheGoodScents.Extraction.Tests
         public void DownloadedFileNotExisting_ThenThrowException()
         {
             string downloadedHTMLFile = @"D:\Working\NACTEM\NCSTOX\Data\154.html";
-            TheGoodScentsURLExtractor.ExtractURL(downloadedHTMLFile);
+            extractor.GetOccurrences(downloadedHTMLFile);
         }
 
         [TestMethod]
         public void DownloadedFileContainsNoURL_ThenReturnEmptyString()
         {
             string downloadedHTMLFile = @"D:\Working\NACTEM\NCSTOX\Data\noURL.html";
-            string url = TheGoodScentsURLExtractor.ExtractURL(downloadedHTMLFile);
-            url.Should().Be("");
+            string occurences = extractor.GetOccurrences(downloadedHTMLFile);
+            occurences.Should().Be("");
         }
 
         [TestMethod]
-        public void DownloadedFileContainsSingleURL_ThenReturnOne()
+        public void DownloadedFileLeadsToValidOccurences_ThenReturnCorrectOne()
         {
             string downloadedHTMLFile = @"D:\Working\NACTEM\NCSTOX\Data\155.html";
-            string url = TheGoodScentsURLExtractor.ExtractURL(downloadedHTMLFile);
-            url.Should().Be("http://www.thegoodscentscompany.com/data/rw1560811.html");
+            string occurences = extractor.GetOccurrences(downloadedHTMLFile);
+            occurences.Should().Be("chamomile\tfenugreek");
         }
 
         [TestMethod]
-        public void DownloadedFileContainsMultipleURLs_ThenReturnFirstOne()
+        public void DownloadedFileLeadsToNoOccurence_ThenReturnEmptyString()
         {
             string downloadedHTMLFile = @"D:\Working\NACTEM\NCSTOX\Data\10069.html";
-            string url = TheGoodScentsURLExtractor.ExtractURL(downloadedHTMLFile);
-            url.Should().Be("http://www.thegoodscentscompany.com/data/rw1004532.html");
+            string occurences = extractor.GetOccurrences(downloadedHTMLFile);
+            occurences.Should().Be("");
         }
     }
 }

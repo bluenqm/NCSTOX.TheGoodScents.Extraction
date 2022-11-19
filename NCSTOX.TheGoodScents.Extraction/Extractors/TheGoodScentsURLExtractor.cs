@@ -1,14 +1,16 @@
-﻿using System.Text.RegularExpressions;
+﻿using HtmlAgilityPack;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace NCSTOX.TheGoodScents.Extraction.Extractors
 {
-    public class TheGoodScentsURLExtractor : ITheGoodScentsURLExtractor
+    public static class TheGoodScentsURLExtractor
     {
         private const string URL_PREFIX = "http://www.thegoodscentscompany.com/";
 
-        public string ExtractURL(string downloadedHTMLFileLocation)
+        public static string ExtractURL(string downloadedHTMLFileLocation)
         {
-            string textFromdownloadedHTMLFile = string.Empty;
+            string textFromdownloadedHTMLFile;
             try
             {
                 textFromdownloadedHTMLFile = File.ReadAllText(downloadedHTMLFileLocation);
@@ -25,7 +27,7 @@ namespace NCSTOX.TheGoodScents.Extraction.Extractors
                 return string.Empty;
         }
 
-        private string BuildFullURL(string partURL)
+        private static string BuildFullURL(string partURL)
         {
             return URL_PREFIX + partURL;
         }

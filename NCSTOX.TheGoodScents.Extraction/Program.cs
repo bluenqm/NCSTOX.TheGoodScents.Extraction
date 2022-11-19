@@ -3,7 +3,8 @@ using NCSTOX.TheGoodScents.Extraction.Extractors;
 
 Console.WriteLine("Hello, World!");
 
-TheGoodScentsURLExtractor extractor = new();
-string downloadedHTMLFile = @"D:\Working\NACTEM\NCSTOX\Data\10069.html";
-string url = extractor.ExtractURL(downloadedHTMLFile);
-Console.WriteLine(url);
+TheGoodScentsOccurenceBulkExtractor extractor = new();
+string downloadedHTMLFolder = @"D:\Working\NACTEM\NCSTOX\Data\";
+string moleculeFile = @"C:\Users\nqminh\Documents\NCSTOX-master\ncstoxII25k.csv";
+string outputFile = @"C:\Users\nqminh\Documents\NCSTOX-master\TheGoodScentsResults.txt";
+extractor.GetOccurrences(moleculeFile, downloadedHTMLFolder, outputFile);
