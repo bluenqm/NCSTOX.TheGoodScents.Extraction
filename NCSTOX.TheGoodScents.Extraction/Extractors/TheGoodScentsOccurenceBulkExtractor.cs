@@ -1,0 +1,36 @@
+﻿using HtmlAgilityPack;
+using System.Net;
+using System.Text.RegularExpressions;
+
+namespace NCSTOX.TheGoodScents.Extraction.Extractors
+{
+    public class TheGoodScentsOccurenceBulkExtractor : ITheGoodScentsOccurenceBulkExtractor
+    {
+        public const string FILE_HTML_DIR = @"D:\Working\NACTEM\NCSTOX\Data\";
+        public void GetOccurrences(string fileMoleculeLocation, string downloadedHTMLDirectoryLocation, string outputFileLocation)
+        {
+            TheGoodScentsOccurencesExtractor extractor = new();
+            using (var reader = new StreamReader(fileMoleculeLocation))
+            {
+                using (var writer = new StreamWriter(outputFileLocation))
+                {
+                    int count = 0;
+                    while (!reader.EndOfStream)
+                    {
+                        string line = reader.ReadLine();
+                        count++;
+                        if (count < 154)
+                            continue;
+                        string downloadedHTMLFileName = FILE_HTML_DIR + count.ToString() + ".html";
+                        if (File.Exists(downloadedHTMLFileName))
+                        {
+                            string occurences = extractor.GetOccurrences(downloadedHTMLFileName);
+                            string result = line + "\t" + TheGoodScentsURLExtractor.ExtractURL(downloadedHTMLFileName) + "\t" + occurences;
+                            writer.WriteLine(result);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

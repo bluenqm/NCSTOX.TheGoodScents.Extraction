@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace NCSTOX.TheGoodScents.Extraction.Extractors
 {
-    public interface ITheGoodScentsURLExtractor
+    public interface ITheGoodScentsOccurencesExtractor
     {
-        string ExtractURL(string downloadedHTMLFileLocation);
+        string GetOccurrences(string downloadedHTMLFileLocation);
     }
 }
