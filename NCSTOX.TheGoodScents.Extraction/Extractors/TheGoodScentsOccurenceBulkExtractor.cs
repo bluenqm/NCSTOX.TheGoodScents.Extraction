@@ -21,7 +21,11 @@ namespace NCSTOX.TheGoodScents.Extraction.Extractors
                         string line = reader.ReadLine();
                         count++;
                         if (count % 100 == 0)
+                        {
                             Console.Write(".");
+                            if (count % 5000 == 0)
+                                Console.WriteLine();
+                        }
                         string downloadedHTMLFileName = FILE_HTML_DIR + count.ToString() + ".html";
                         if (File.Exists(downloadedHTMLFileName))
                         {

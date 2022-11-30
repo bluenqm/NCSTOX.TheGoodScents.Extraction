@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCSTOX.TheGoodScents.Extraction", "NCSTOX.TheGoodScents.Extraction\NCSTOX.TheGoodScents.Extraction.csproj", "{9FBCD053-CFC7-4084-A486-BF70F77F651D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCSTOX.TheGoodScents.Extraction.Tests", "NCSTOX.TheGoodScents.Extraction.Tests\NCSTOX.TheGoodScents.Extraction.Tests.csproj", "{9C9E22A8-4874-49AC-88C0-BAB787FBFC26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCSTOX.TheGoodScents.Extraction.Tests", "NCSTOX.TheGoodScents.Extraction.Tests\NCSTOX.TheGoodScents.Extraction.Tests.csproj", "{9C9E22A8-4874-49AC-88C0-BAB787FBFC26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCSTOX.ComboDB.Extraction", "NCSTOX.ComboDB.Extraction\NCSTOX.ComboDB.Extraction.csproj", "{3026D3DF-1717-456D-8B4F-892879286DD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9C9E22A8-4874-49AC-88C0-BAB787FBFC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C9E22A8-4874-49AC-88C0-BAB787FBFC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C9E22A8-4874-49AC-88C0-BAB787FBFC26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3026D3DF-1717-456D-8B4F-892879286DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3026D3DF-1717-456D-8B4F-892879286DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3026D3DF-1717-456D-8B4F-892879286DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3026D3DF-1717-456D-8B4F-892879286DD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
