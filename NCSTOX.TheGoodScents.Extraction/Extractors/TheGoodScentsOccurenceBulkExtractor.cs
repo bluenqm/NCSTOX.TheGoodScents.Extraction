@@ -9,6 +9,7 @@ namespace NCSTOX.TheGoodScents.Extraction.Extractors
         public const string FILE_HTML_DIR = @"D:\Working\NACTEM\NCSTOX\Data\";
         public void GetOccurrences(string fileMoleculeLocation, string downloadedHTMLDirectoryLocation, string outputFileLocation)
         {
+            Console.WriteLine("Extracting ...");
             TheGoodScentsOccurencesExtractor extractor = new();
             using (var reader = new StreamReader(fileMoleculeLocation))
             {
@@ -19,8 +20,12 @@ namespace NCSTOX.TheGoodScents.Extraction.Extractors
                     {
                         string line = reader.ReadLine();
                         count++;
-                        if (count < 154)
-                            continue;
+                        if (count % 100 == 0)
+                        {
+                            Console.Write(".");
+                            if (count % 5000 == 0)
+                                Console.WriteLine();
+                        }
                         string downloadedHTMLFileName = FILE_HTML_DIR + count.ToString() + ".html";
                         if (File.Exists(downloadedHTMLFileName))
                         {
@@ -29,8 +34,11 @@ namespace NCSTOX.TheGoodScents.Extraction.Extractors
                             writer.WriteLine(result);
                         }
                     }
+                    writer.Close();
                 }
+                reader.Close();
             }
+            Console.WriteLine("Extraction Finished!");
         }
     }
 }
